@@ -56,7 +56,7 @@ int main()
         }
     };
 
-    // Unformatted display so you can see how to access the vector elements
+    /*// Unformatted display so you can see how to access the vector elements
     std::cout << tours.title << std::endl;
     for(auto country : tours.countries) {   // loop through the countries
         std::cout << country.name << std::endl;
@@ -65,6 +65,36 @@ int main()
                           << "\t" << city.population 
                           << "\t" << city.cost 
                           << std::endl;
+        }
+    }*/
+
+    std::cout << "1234567890123456789012345678901234567890123456789012345678901234567890" << std::endl;
+    std::cout << std::endl;
+
+    std::cout << std::setw(50) << tours.title << std::endl;
+    std::cout << std::endl;
+
+    std::cout << std::setw(19) << std::left << "Country"
+        << std::setw(25) << std::left << "City"
+        << std::setw(20) << std::left << "Population"
+        << std::setw(6) << "Price" << std::endl;
+    std::cout << "----------------------------------------------------------------------" << std::endl;
+
+    int counter{}; 
+    for (auto country : tours.countries) { // loop through all the countries
+        std::cout << std::setw(19) << std::left << country.name;
+        counter = 0;
+        for (auto city : country.cities) {
+            if (counter < 1)
+                std::cout << std::setw(28) << std::left << city.name;
+            else {
+                std::cout << std::setw(19) << std::left << " "
+                    << std::setw(28) << std::left << city.name;
+            }
+            std:: cout << std::setw(8) << std::right << city.population
+            << std::setw(15) << std::right << std::showpoint << std::setprecision(2) 
+                << std::fixed << city.cost << std::endl;
+            counter++;
         }
     }
 
