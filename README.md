@@ -1,31 +1,14 @@
-Challenge 3  
-Word finder  
+# Challenge 4  
+## Copy Romeo and Juliet with line numbers  
 
-Ask the user to enter a word  
-Process the Romeo and Juliet file and determine how many total words there are  
-and how many times the word the user entered appears as a substring of a word in the play.  
+This challenge should be pretty easy.  
+I have provided the text to Romeo and Juliet in a file named romeoandjuliet.txt  
 
-For example.  
-If the user enters: love  
-Then the words love, lovely, and beloved will all be considered matches.  
-You decide whether you want to be case sensitive or not. My solution is case sensitive  
-
-Sample are some sample runs:  
-
-Enter the substring to search for: love  
-25919 words were searched...  
-The substring love was found 171 times  
-
-Enter the substring to search for: Romeo  
-25919 words were searched...  
-The substring Romeo was found 132 times  
-
-Enter the substring to search for: Juliet  
-25919 words were searched...  
-The substring Juliet was found 49 times  
-
-Enter the substring to search for: Frank  
-25919 words were searched...  
-The substring Frank was found 0 times  
+For this challenge you have to make copy of the Romeo and Juliet file and save it to another file.  
+This new copy should have line numbers at the beginning of each line in the play.  
+Please format the numbers nicely so everything lines up.  
+ 
+Feel free to extend this challenge in any way you like.  
+For example, you may want to provide line numbers only for lines that actually have text  
 
 Have fun!  

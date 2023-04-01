@@ -1,39 +1,38 @@
 // Section 19
-// Challenge 3
-// Word counter
+// Challenge 4
+// Copy Romeo and Juliet with line numbers
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <algorithm>
 
 int main() {
-
-    std::ifstream in_file("romeoandjuliet.txt");
+    
+    std::ifstream in_file{ "romeoandjuliet" }; 
     if (!in_file)
-        std::cerr << "File open error" << std::endl;
+        std::cerr << "couldn't open input file" << std::endl;
+
+    std::ofstream out_file{ "output.txt" };
+    if (!out_file)
+        std::cerr << "couldn't open output file" << std::endl;
 
     std::string line{};
+    int count{1}; 
+    while (!in_file.eof())
+    {
+        // only add a line number to lines that have text
+        std::getline(in_file, line);
+        if (line.size() != 0) {
+            out_file << count << "          " << line << std::endl;
+            count++;
+        }
+        else
+            out_file << line << std::endl;
 
-    std::cout << "Please enter a word to find: ";
-    std::string word{}, word_lower{}, word_upper{};
-    std::cin >> word;
-
-    word_upper = word;
-    word_upper[0] = std::toupper(word[0]);
-    word_lower = word;
-    word_lower[0] = std::tolower(word[0]);
-
-    int num_found{}, num_words{};
-
-    while (!in_file.eof()) {
-        in_file >> line;
-        if (line.find(word) != std::string::npos || line.find(word_lower) != std::string::npos || line.find(word_upper) != std::string::npos)
-            num_found++;
-        num_words++;
+        // add a line number to every line even blank lines
+        //out_file << count << "          " << line << std::endl;
+       
     }
-
-    std::cout << num_words << " words were searched..." << std::endl;
-    std::cout << "The substring " << word << " was found " << num_found << " times" << std::endl;
-
+   
     return 0;
 }
+
