@@ -1,42 +1,31 @@
-# Challenge 2  
-## Automated Grader  
+Challenge 3  
+Word finder  
 
-Write a program that reads a file named 'responses.txt" that contains the answer key for a quiz  
-as well as student responses for the quiz.  
+Ask the user to enter a word  
+Process the Romeo and Juliet file and determine how many total words there are  
+and how many times the word the user entered appears as a substring of a word in the play.  
 
-The answer key is the first item in the file.  
-Student1 name  
-Student1 responses  
-Student2 name  
-Student2 responses  
-. . .  
+For example.  
+If the user enters: love  
+Then the words love, lovely, and beloved will all be considered matches.  
+You decide whether you want to be case sensitive or not. My solution is case sensitive  
 
-Here is a sample file.  
+Sample are some sample runs:  
 
-ABCDE  
-Frank  
-ABCDE  
-Larry  
-ABCAC  
-Moe  
-BBCDE  
-Curly  
-BBAAE  
-Michael  
-BBCDE  
+Enter the substring to search for: love  
+25919 words were searched...  
+The substring love was found 171 times  
 
-You should read the file and display:  
-Each student's name and score (#correct out of 5)  
-At the end, the class average should be displayed  
-You may assume that the data in the file is properly formatted  
+Enter the substring to search for: Romeo  
+25919 words were searched...  
+The substring Romeo was found 132 times  
 
-Program should output to the console the following:  
-Student                     Score  
-----------------------------  
-Frank                             5  
-Larry                              3  
-Moe                              4  
-Curly                             2  
-Michael                         4  
----------------------------  
-Average score            3.6  
+Enter the substring to search for: Juliet  
+25919 words were searched...  
+The substring Juliet was found 49 times  
+
+Enter the substring to search for: Frank  
+25919 words were searched...  
+The substring Frank was found 0 times  
+
+Have fun!  
