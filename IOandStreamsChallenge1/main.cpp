@@ -1,103 +1,76 @@
 // Section 19
-// Challenge 1
-// Formatting output
+// Challenge 2
+// Automated Grader
 #include <iostream>
+#include <fstream>
+#include <string>
 #include <iomanip>
 #include <vector>
-#include <string>
 
-struct City {
-    std::string name;
-    long population;
-    double cost;
+struct student {
+    std::string name{};
+    std::string response{};
+    int score{};
 };
 
-// Assume each country has at least 1 city
-struct Country {
-    std::string name;
-    std::vector<City> cities;
-};
+int main() {
 
-struct Tours {
-    std::string title;
-    std::vector<Country> countries;
-};
+    std::ifstream in_file{ "responses.txt" };
+    if (!in_file) {
+        std::cerr << "File open error" << std::endl;
+    }
 
-int main()
-{
-    Tours tours
-        { "Tour Ticket Prices from Miami",
-            {
-                {
-                    "Colombia", { 
-                        { "Bogota", 8778000, 400.98 },
-                        { "Cali", 2401000, 424.12 },
-                        { "Medellin", 2464000, 350.98 },
-                        { "Cartagena", 972000, 345.34 } 
-                    },
-                },
-                {
-                    "Brazil", { 
-                        { "Rio De Janiero", 13500000, 567.45 },
-                        { "Sao Paulo", 11310000, 975.45 },
-                        { "Salvador", 18234000, 855.99 }
-                    },
-                },
-                {
-                    "Chile", { 
-                        { "Valdivia", 260000, 569.12 }, 
-                        { "Santiago", 7040000, 520.00 }
-                },
-            },
-                { "Argentina", { 
-                    { "Buenos Aires", 3010000, 723.77 } 
-                } 
-            },
+    std::vector<student> all_students; 
+    int count{ 0 };
+    std::string key{}; 
+    while (!in_file.eof())
+    {
+        if (count == 0) {
+            in_file >> key;
+            count++; 
         }
-    };
-
-    /*// Unformatted display so you can see how to access the vector elements
-    std::cout << tours.title << std::endl;
-    for(auto country : tours.countries) {   // loop through the countries
-        std::cout << country.name << std::endl;
-        for(auto city : country.cities) {       // loop through the cities for each country
-            std::cout << "\t" << city.name 
-                          << "\t" << city.population 
-                          << "\t" << city.cost 
-                          << std::endl;
-        }
-    }*/
-
-    std::cout << "1234567890123456789012345678901234567890123456789012345678901234567890" << std::endl;
-    std::cout << std::endl;
-
-    std::cout << std::setw(50) << tours.title << std::endl;
-    std::cout << std::endl;
-
-    std::cout << std::setw(19) << std::left << "Country"
-        << std::setw(25) << std::left << "City"
-        << std::setw(20) << std::left << "Population"
-        << std::setw(6) << "Price" << std::endl;
-    std::cout << "----------------------------------------------------------------------" << std::endl;
-
-    int counter{}; 
-    for (auto country : tours.countries) { // loop through all the countries
-        std::cout << std::setw(19) << std::left << country.name;
-        counter = 0;
-        for (auto city : country.cities) {
-            if (counter < 1)
-                std::cout << std::setw(28) << std::left << city.name;
-            else {
-                std::cout << std::setw(19) << std::left << " "
-                    << std::setw(28) << std::left << city.name;
-            }
-            std:: cout << std::setw(8) << std::right << city.population
-            << std::setw(15) << std::right << std::showpoint << std::setprecision(2) 
-                << std::fixed << city.cost << std::endl;
-            counter++;
+        else {
+            student temp;
+            in_file >> temp.name;
+            in_file >> temp.response;
+            all_students.push_back(temp);
         }
     }
 
-    std::cout << std::endl << std::endl;
+    const int name_width{ 30 }, response_width{ 24 }, score_width{ 16 };
+
+    std::cout << "1234567890123456789012345678901234567890123456789012345678901234567890" << std::endl;
+    std::cout << "The key is: " << key << std::endl;
+    std::cout << std::endl;
+    std::cout << std::setw(name_width) << std::left << "Name:"
+        << std::setw(response_width) << std::left << "Response:"
+        << std::setw(score_width) << std::right << "Score:" << std::endl;
+    std::cout << "-----------------------------------------------------------------------" << std::endl;
+
+    float average_score{ 0 };
+    for (auto c : all_students)
+    {
+        for (int i = 0; i <= c.response.size()-1 ; i++)
+        {
+            if (c.response.at(i) == key.at(i))
+                c.score++;
+        }
+
+        average_score += c.score; 
+
+        std::cout << std::setw(name_width) << std::left << c.name
+            << std::setw(response_width) << std::left << c.response
+            << std::setw(score_width) << std::right << c.score << std::endl;
+        
+    }
+
+    average_score = average_score / all_students.size();
+    std::cout << "---------------------------------------------------------------------------" << std::endl;
+    std::cout << std::setw(54) << std::left << "Average Score:"
+        << std::setw(16) << std::right << average_score << std::endl;
+
+    std::cout << std::endl;
+    std::cout << "Hello world" << std::endl;
     return 0;
 }
+

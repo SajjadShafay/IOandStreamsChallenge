@@ -1,27 +1,42 @@
-# I/O and Streams  
-## Challenge 1  
+# Challenge 2  
+## Automated Grader  
 
-Formatting output  
-===========================================================  
-I have provided you with the starter source code for this challenge.  
-In this challenge you are to display the provided data in a nicely formatted table.  
-Your table does not have to match mine, but practice with the format manipulators  
-so you become comfortable with them.  
+Write a program that reads a file named 'responses.txt" that contains the answer key for a quiz  
+as well as student responses for the quiz.  
 
-There are 3 structures provided. Yes, these could also be classes with public data,   
-but it's common to use structures when we simply want to model only data and not   
-operations as we would with classes.  
+The answer key is the first item in the file.  
+Student1 name  
+Student1 responses  
+Student2 name  
+Student2 responses  
+. . .  
 
-The structures work together to create a Tours structure that will contain  
-information about Tours to South America.  
-The Tours include Countries, Cities within those countries along with population and cost data for   
-each city tour.  
-I know, population? Huh? I just wanted a big number so that you can format it, OK :)  
+Here is a sample file.  
 
-Please watch the Challenge video for the expected output. It won't look right if I put it in this  
-editor because of the font style.  
+ABCDE  
+Frank  
+ABCDE  
+Larry  
+ABCAC  
+Moe  
+BBCDE  
+Curly  
+BBAAE  
+Michael  
+BBCDE  
 
-In the provided source code I'm giving you some code that displays the data from the structures   
-and the vectors within the structures. This code uses tabs to format the data and it looks pretty ugly.  
+You should read the file and display:  
+Each student's name and score (#correct out of 5)  
+At the end, the class average should be displayed  
+You may assume that the data in the file is properly formatted  
 
-Have fun!! Create functions if you like, use constants, whatever you think makes sense!  
+Program should output to the console the following:  
+Student                     Score  
+----------------------------  
+Frank                             5  
+Larry                              3  
+Moe                              4  
+Curly                             2  
+Michael                         4  
+---------------------------  
+Average score            3.6  
