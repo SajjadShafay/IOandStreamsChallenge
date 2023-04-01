@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <iomanip>
 
 int main() {
     
@@ -22,14 +23,14 @@ int main() {
         // only add a line number to lines that have text
         std::getline(in_file, line);
         if (line.size() != 0) {
-            out_file << count << "          " << line << std::endl;
+            out_file << std::setw(7) << std::left << count << line << std::endl;
             count++;
         }
         else
             out_file << line << std::endl;
 
         // add a line number to every line even blank lines
-        //out_file << count << "          " << line << std::endl;
+        //out_file << std::setw(7) << std::left << count << line << std::endl;
        
     }
    
